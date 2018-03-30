@@ -2,7 +2,7 @@ package mep;
 
 import algorithm_interface.Element;
 
-public class MEPElement extends Element {
+public class MEPElement extends Element implements Cloneable {
 
 	public MEPElement(String elem) {
 		symbol = elem;
@@ -14,6 +14,18 @@ public class MEPElement extends Element {
 		symbol = elem;
 		index1 = addr1;
 		index2 = addr2;
+	}
+
+	@Override
+	public MEPElement clone() {
+		MEPElement elem = null;
+		try {
+			elem = (MEPElement) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		return elem;
 	}
 
 	public int getIndex1() {

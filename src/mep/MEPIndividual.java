@@ -10,8 +10,10 @@ public class MEPIndividual extends Individual implements Cloneable {
 	MEPElement[] programs;
 	String[] phenotypes;
 	int bestIndex;
+	int geneLength;
 
 	public MEPIndividual(int length) {
+		geneLength = length;
 		programs = new MEPElement[length];
 		phenotypes = new String[length];
 		bestIndex = -1;
@@ -103,6 +105,14 @@ public class MEPIndividual extends Individual implements Cloneable {
 			result += programs[i].toString();
 		}
 		return result + "\n";
+	}
+
+	public MEPElement getElement(int i) {
+		return programs[i];
+	}
+
+	public void setElement(MEPElement element, int i) {
+		programs[i] = element;
 	}
 
 }

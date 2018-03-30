@@ -1,7 +1,9 @@
 package algorithm_interface;
 
-public interface IOperator {
-	public Individual crossover(Individual[] indivs);
+import experiment.Experiment;
 
-	public Individual mutation(Individual indiv);
+public interface IOperator {
+	public Individual[] crossover(Individual[] indivs);
+
+	public Individual mutation(Experiment experiment, Individual indiv);
 }
