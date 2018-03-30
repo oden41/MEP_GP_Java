@@ -6,7 +6,7 @@ import algorithm_interface.Individual;
 import experiment.Experiment;
 import experiment.SymbolicRegressionExperiment;
 
-public class MEPIndividual extends Individual {
+public class MEPIndividual extends Individual implements Cloneable {
 	MEPElement[] programs;
 	String[] phenotypes;
 	int bestIndex;
@@ -58,6 +58,20 @@ public class MEPIndividual extends Individual {
 			phenotypes[i] = getMathExp(i);
 			phenotypes[i] = util.evaluate("ExpandAll(" + phenotypes[i] + ")").toString().replace(" ", "");
 		}
+	}
+
+	@Override
+	public MEPIndividual clone() {
+		MEPIndividual cIndiv = null;
+		cIndiv = (MEPIndividual) super.clone();
+		cIndiv.bestIndex = bestIndex;
+		cIndiv.phenotypes = phenotypes.clone();
+		cIndiv.programs = programs.clone();
+		for (int i = 0; i < programs.length; i++) {
+			cIndiv.programs[i] = new MEPElement(programs[i].getSymbol(), programs[i].getIndex1(),
+					programs[i].getIndex2());
+		}
+		return cIndiv;
 	}
 
 	/**
