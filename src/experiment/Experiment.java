@@ -7,6 +7,12 @@ import algorithm_interface.Individual;
 public abstract class Experiment {
 	protected String[] nonTerminals;
 	protected String[] terminals;
+	protected int maxEvals;
+
+	public int getMaxEvals() {
+		return maxEvals;
+	}
+
 	public static Random random;
 
 	public Experiment() {

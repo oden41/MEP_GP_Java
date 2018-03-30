@@ -19,6 +19,7 @@ public class SymbolicRegressionExperiment extends Experiment {
 	public SymbolicRegressionExperiment() {
 		nonTerminals = new String[] { "*", "+", "-" };
 		terminals = new String[] { "x", "c" };
+		maxEvals = 300000;
 	}
 
 	@Override
