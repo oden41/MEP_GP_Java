@@ -1,5 +1,7 @@
 package gp;
 
+import org.matheclipse.core.eval.ExprEvaluator;
+
 import algorithm_interface.Individual;
 import algorithm_interface.Parameter;
 import experiment.Experiment;
@@ -43,8 +45,9 @@ public class GPIndividual extends Individual {
 
 	@Override
 	public void updatePhenotype() {
-		// TODO 自動生成されたメソッド・スタブ
-
+		expression = root.printInOrder();
+		ExprEvaluator util = new ExprEvaluator();
+		expression = util.evaluate("ExpandAll(" + expression + ")").toString().replace(" ", "");
 	}
 
 	public String getTreeString() {

@@ -91,4 +91,21 @@ public class GPElement extends Element implements Cloneable {
 		}
 		return buf.toString();
 	}
+
+	public String printInOrder() {
+		String str = "";
+		switch (children.length) {
+		case 0:
+			str += getSymbol();
+			break;
+		case 1:
+			str += getSymbol() + "(" + children[0].printInOrder() + ")";
+			break;
+		case 2:
+			str += "(" + children[0].printInOrder() + getSymbol() + children[1].printInOrder() + ")";
+			break;
+		default:
+		}
+		return str;
+	}
 }

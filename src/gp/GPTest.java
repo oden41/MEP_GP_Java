@@ -15,6 +15,8 @@ public class GPTest {
 			GPIndividual indiv = new GPIndividual();
 			indiv.initialize(experiment);
 			System.out.println(indiv.getTreeString());
+			indiv.updatePhenotype();
+			System.out.println(indiv.expression);
 		}
 	}
 
