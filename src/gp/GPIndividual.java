@@ -1,5 +1,8 @@
 package gp;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 import org.matheclipse.core.eval.ExprEvaluator;
 
 import algorithm_interface.Individual;
@@ -52,6 +55,37 @@ public class GPIndividual extends Individual {
 
 	public String getTreeString() {
 		return root.getTreeString();
+	}
+
+	public int getNoOfNodes() {
+		return root.getNoOfNodes();
+	}
+
+	public int getMaxHeight() {
+		return root.getMaxHeight();
+	}
+
+	public GPElement getElement(int id) {
+		if (id == 0)
+			return root;
+
+		GPElement node;
+		Queue<GPElement> queue = new ArrayDeque<>();
+		for (int i = 0; i < root.children.length; i++) {
+			queue.add(root.children[i]);
+		}
+
+		while (!queue.isEmpty()) {
+			node = queue.poll();
+			id--;
+			if (id == 0)
+				return node;
+
+			for (int i = 0; i < node.children.length; i++) {
+				queue.add(node.children[i]);
+			}
+		}
+		return null;
 	}
 
 }

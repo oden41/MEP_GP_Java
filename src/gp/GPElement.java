@@ -108,4 +108,20 @@ public class GPElement extends Element implements Cloneable {
 		}
 		return str;
 	}
+
+	public int getNoOfNodes() {
+		int count = 1;
+		for (int i = 0; i < children.length; i++) {
+			count += children[i].getNoOfNodes();
+		}
+		return count;
+	}
+
+	public int getMaxHeight() {
+		int height = -1;
+		for (int i = 0; i < children.length; i++) {
+			height = Math.max(height, children[i].getMaxHeight());
+		}
+		return height + 1;
+	}
 }
