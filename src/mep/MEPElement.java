@@ -5,15 +5,11 @@ import algorithm_interface.Element;
 public class MEPElement extends Element implements Cloneable {
 
 	public MEPElement(String elem) {
-		symbol = elem;
-		index1 = -1;
-		index2 = -1;
+		super(elem);
 	}
 
 	public MEPElement(String elem, int addr1, int addr2) {
-		symbol = elem;
-		index1 = addr1;
-		index2 = addr2;
+		super(elem, addr1, addr2);
 	}
 
 	@Override
@@ -26,18 +22,6 @@ public class MEPElement extends Element implements Cloneable {
 			e.printStackTrace();
 		}
 		return elem;
-	}
-
-	public int getIndex1() {
-		return index1;
-	}
-
-	public int getIndex2() {
-		return index2;
-	}
-
-	public String getSymbol() {
-		return symbol;
 	}
 
 	@Override

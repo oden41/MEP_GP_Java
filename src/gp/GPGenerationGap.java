@@ -12,9 +12,9 @@ public class GPGenerationGap extends GenerationGap {
 	}
 
 	@Override
-	public void doOneIteration() {
+	public int doOneIteration() {
 		// TODO 自動生成されたメソッド・スタブ
-
+		return 0;
 	}
 
 	@Override
