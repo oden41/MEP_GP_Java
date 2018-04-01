@@ -17,6 +17,15 @@ public class GPIndividual extends Individual {
 	}
 
 	@Override
+	public GPIndividual clone() {
+		GPIndividual elem = new GPIndividual();
+		elem.evalValue = evalValue;
+		elem.expression = expression;
+		elem.root = root.clone();
+		return elem;
+	}
+
+	@Override
 	public void initialize(Experiment experiment) {
 		String[] nonTerminals = experiment.getNonterminals();
 		String[] terminals = experiment.getTerminals();
@@ -86,6 +95,17 @@ public class GPIndividual extends Individual {
 			}
 		}
 		return null;
+	}
+
+	public void replaceNode(int id, GPElement elem) {
+		if (id == 0)
+			root = elem.clone();
+		else {
+			int targetID = (id - 1) / 2;
+			GPElement targetNode = getElement(targetID);
+			targetNode.children[(id + 1) % 2] = null;
+			targetNode.children[(id + 1) % 2] = elem.clone();
+		}
 	}
 
 }

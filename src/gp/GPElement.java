@@ -17,22 +17,22 @@ public class GPElement extends Element implements Cloneable {
 		children = new GPElement[0];
 	}
 
-	/* (非 Javadoc)
-	 * 基本的に木構造はノード先が分かるため，indexを使用せず
-	 * @see java.lang.Object#clone()
-	 */
 	@Override
 	public GPElement clone() {
-		GPElement elem = null;
-		try {
-			elem = (GPElement) super.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+		GPElement elem = new GPElement(symbol);
+		elem.id = id;
+		elem.tempDepth = tempDepth;
+		elem.children = new GPElement[children.length];
+		for (int i = 0; i < children.length; i++) {
+			elem.children[i] = children[i].clone();
 		}
 		return elem;
 	}
 
+	/* (非 Javadoc)
+	 * 基本的に木構造はノード先が分かるため，indexを使用せず
+	 * @see java.lang.Object#clone()
+	 */
 	GPElement initialize(int gpInitTree, boolean isFull, String[] nonTerminals, String[] terminals) {
 		if (gpInitTree <= 0) {
 			//終端記号を設定
