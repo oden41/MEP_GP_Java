@@ -81,7 +81,7 @@ public class GPTest {
 		System.out.println(indiv.getTreeString());
 	}
 
-	@Test
+	//@Test
 	public void testCrossover() {
 		System.out.println("--- GPClossover ---");
 		GPIndividual indiv = new GPIndividual();
@@ -96,6 +96,20 @@ public class GPTest {
 		Individual[] offsprings = operator.crossover(new Individual[] { indiv, indiv2 });
 		System.out.println(((GPIndividual) offsprings[0]).getTreeString());
 		System.out.println(((GPIndividual) offsprings[1]).getTreeString());
+
+	}
+
+	@Test
+	public void testMutation() {
+		System.out.println("--- GPMutation ---");
+		GPIndividual indiv = new GPIndividual();
+		indiv.initialize(3, true, experiment.getNonterminals(), experiment.getTerminals());
+		System.out.println("indiv1");
+		System.out.println(indiv.getTreeString());
+
+		GPOperator operator = new GPOperator();
+		Individual offsprings = operator.mutation(experiment, indiv);
+		System.out.println(((GPIndividual) offsprings).getTreeString());
 
 	}
 

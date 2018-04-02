@@ -46,8 +46,19 @@ public class GPOperator implements IOperator {
 
 	@Override
 	public Individual mutation(Experiment experiment, Individual indiv) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		GPIndividual newIndiv = null;
+		GPIndividual parent = ((GPIndividual) indiv).clone();
+		GPElement node = new GPElement("");
+		do {
+			newIndiv = parent.clone();
+			int id = Experiment.random.nextInt(parent.getNoOfNodes());
+			node = node.initialize(Parameter.GP_INIT_TREE, false, experiment.getNonterminals(),
+					experiment.getTerminals());
+			newIndiv.replaceNode(id, node);
+		}
+		// 一定以上の個体は次世代に引き継がない
+		while (newIndiv.getMaxHeight() > Parameter.GP_MAX_TREE);
+		return newIndiv;
 	}
 
 }
