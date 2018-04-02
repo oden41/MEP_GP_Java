@@ -14,6 +14,7 @@ public class GPIndividual extends Individual {
 	String expression;
 
 	public GPIndividual() {
+		evalValue = Double.MAX_VALUE;
 	}
 
 	@Override
