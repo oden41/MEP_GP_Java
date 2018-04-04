@@ -13,6 +13,10 @@ public class GPIndividual extends Individual {
 	GPElement root;
 	String expression;
 
+	public String getExpression() {
+		return expression;
+	}
+
 	public GPIndividual() {
 		evalValue = Double.MAX_VALUE;
 	}

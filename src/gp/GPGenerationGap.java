@@ -17,6 +17,7 @@ public class GPGenerationGap extends GenerationGap {
 	public GPGenerationGap(Experiment experiment, int noOfPopulation) {
 		this.experiment = experiment;
 		population = new GPIndividual[noOfPopulation];
+		operator = new GPOperator();
 	}
 
 	@Override
@@ -24,6 +25,7 @@ public class GPGenerationGap extends GenerationGap {
 		for (int i = 0; i < population.length; i++) {
 			population[i] = new GPIndividual();
 			population[i].initialize(experiment);
+			population[i].updatePhenotype();
 			population[i].setEvalValue(experiment.setEvalvalue(population[i]));
 		}
 	}

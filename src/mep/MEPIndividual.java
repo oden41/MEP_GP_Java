@@ -9,7 +9,21 @@ import experiment.SymbolicRegressionExperiment;
 public class MEPIndividual extends Individual implements Cloneable {
 	MEPElement[] programs;
 	String[] phenotypes;
+
+	public String[] getPhenotypes() {
+		return phenotypes;
+	}
+
 	int bestIndex;
+
+	public int getBestIndex() {
+		return bestIndex;
+	}
+
+	public void setBestIndex(int bestIndex) {
+		this.bestIndex = bestIndex;
+	}
+
 	int geneLength;
 
 	public MEPIndividual(int length) {

@@ -25,6 +25,7 @@ public class MEPGenerationGap extends GenerationGap {
 		for (int i = 0; i < population.length; i++) {
 			population[i] = new MEPIndividual(geneLength);
 			population[i].initialize(experiment);
+			population[i].updatePhenotype();
 			population[i].setEvalValue(experiment.setEvalvalue(population[i]));
 		}
 	}
