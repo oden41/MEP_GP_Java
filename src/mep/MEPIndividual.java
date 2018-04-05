@@ -129,4 +129,11 @@ public class MEPIndividual extends Individual implements Cloneable {
 		programs[i] = element;
 	}
 
+	@Override
+	public String getExpression() {
+		ExprEvaluator util = new ExprEvaluator();
+		return expression = util.evaluate("ExpandAll(" + getMathExp(bestIndex) + ")").toString().replace(" ", "");
+
+	}
+
 }

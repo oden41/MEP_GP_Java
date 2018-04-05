@@ -17,7 +17,7 @@ public class GPTest {
 			indiv.initialize(experiment);
 			System.out.println(indiv.getTreeString());
 			indiv.updatePhenotype();
-			System.out.println(indiv.expression);
+			System.out.println(indiv.getExpression());
 		}
 	}
 
@@ -77,7 +77,7 @@ public class GPTest {
 		indiv2.root.setSymbol("test");
 		System.out.println("indiv2");
 		System.out.println(indiv2.getTreeString());
-		indiv.replaceNode(7, indiv2.root);
+		indiv.replaceNode(2, indiv2.root);
 		System.out.println(indiv.getTreeString());
 	}
 

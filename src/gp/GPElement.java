@@ -10,6 +10,8 @@ import experiment.Experiment;
 public class GPElement extends Element implements Cloneable {
 	int id;
 	GPElement[] children;
+	//交叉の際に使用
+	GPElement parentNode;
 	int tempDepth;
 
 	public GPElement(String elem) {

@@ -4,6 +4,11 @@ import experiment.Experiment;
 
 public abstract class Individual implements Cloneable {
 	protected double evalValue;
+	protected String expression;
+
+	public String getExpression() {
+		return expression;
+	}
 
 	public double getEvalValue() {
 		return evalValue;

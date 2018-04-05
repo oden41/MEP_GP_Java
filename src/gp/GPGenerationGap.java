@@ -36,6 +36,10 @@ public class GPGenerationGap extends GenerationGap {
 		Arrays.sort(population, (a, b) -> ((Double) a.getEvalValue()).compareTo((Double) b.getEvalValue()));
 		//エリート保存
 		int index = noOfElite;
+		Individual[] eliteIndivs = new Individual[noOfElite];
+		for (int i = 0; i < eliteIndivs.length; i++) {
+			eliteIndivs[i] = population[i].clone();
+		}
 		while (index < population.length) {
 			Individual[] children = { selectByTournament(2), selectByTournament(2) };
 			//遺伝操作
@@ -51,7 +55,13 @@ public class GPGenerationGap extends GenerationGap {
 			for (int j = 0; j < children.length; j++) {
 				children[j].updatePhenotype();
 				children[j].setEvalValue(experiment.setEvalvalue(children[j]));
+				population[index] = children[j].clone();
+				index++;
 			}
+		}
+		//populationにエリート個体を戻す
+		for (int i = 0; i < eliteIndivs.length; i++) {
+			population[i] = eliteIndivs[i];
 		}
 
 		return popCount;

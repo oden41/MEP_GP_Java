@@ -24,7 +24,7 @@ public abstract class GenerationGap {
 		shuffle(sampleSize);
 		Individual[] candidate = new Individual[sampleSize];
 		for (int i = 0; i < candidate.length; i++) {
-			candidate[i] = population[i];
+			candidate[i] = population[i].clone();
 		}
 		Arrays.sort(candidate, (a, b) -> ((Double) a.getEvalValue()).compareTo((Double) b.getEvalValue()));
 

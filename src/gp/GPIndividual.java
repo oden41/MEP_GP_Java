@@ -11,7 +11,6 @@ import experiment.Experiment;
 
 public class GPIndividual extends Individual {
 	GPElement root;
-	String expression;
 
 	public String getExpression() {
 		return expression;
@@ -103,13 +102,37 @@ public class GPIndividual extends Individual {
 	}
 
 	public void replaceNode(int id, GPElement elem) {
-		if (id == 0)
+		// 親ノードだった場合
+		if (id == 0) {
 			root = elem.clone();
-		else {
-			int targetID = (id - 1) / 2;
-			GPElement targetNode = getElement(targetID);
-			targetNode.children[(id + 1) % 2] = null;
-			targetNode.children[(id + 1) % 2] = elem.clone();
+			root.parentNode = null;
+			return;
+		}
+
+		Queue<GPElement> queue = new ArrayDeque<>();
+		for (int i = 0; i < root.children.length; i++) {
+			root.children[i].parentNode = root;
+			queue.add(root.children[i]);
+		}
+		while (!queue.isEmpty()) {
+			GPElement tempNode = queue.poll();
+			id--;
+			if (id == 0) {
+				GPElement parent = tempNode.parentNode;
+				for (int i = 0; i < parent.children.length; i++) {
+					if (parent.children[i].equals(tempNode)) {
+						parent.children[i] = elem.clone();
+					}
+				}
+				tempNode.parentNode = null;
+				return;
+			} else {
+				tempNode.parentNode = null;
+				for (int j = 0; j < tempNode.children.length; j++) {
+					tempNode.children[j].parentNode = tempNode;
+					queue.add(tempNode.children[j]);
+				}
+			}
 		}
 	}
 
