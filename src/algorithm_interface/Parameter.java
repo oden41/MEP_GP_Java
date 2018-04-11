@@ -8,7 +8,8 @@ public class Parameter {
 	public static int getNoOfChildren(String symbol) {
 		if ("Sin".equals(symbol) || "Cos".equals(symbol) || "Log".equals(symbol) || "Not".equals(symbol))
 			return 1;
-		else if ("+".equals(symbol) || "*".equals(symbol) || "-".equals(symbol) || "And".equals(symbol)
+		else if ("+".equals(symbol) || "*".equals(symbol) || "-".equals(symbol) || "/".equals(symbol)
+				|| "And".equals(symbol)
 				|| "Or".equals(symbol))
 			return 2;
 		else

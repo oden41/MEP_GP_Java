@@ -6,8 +6,8 @@ import mep.MEPIndividual;
 
 public class SymbolicRegressionExperiment extends Experiment {
 	//x^4-x^3+x^2+x
-	Double[] x = { 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
-	Double[] y = { 0.0, 2.0, 14.0, 66.0, 212.0, 530.0, 1122.0, 2114.0, 3656.0, 5922.0, 9110.0 };
+	Double[] x = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
+	Double[] y = { 2.0, 14.0, 66.0, 212.0, 530.0, 1122.0, 2114.0, 3656.0, 5922.0, 9110.0 };
 
 	double constMin = -1;
 
@@ -22,7 +22,7 @@ public class SymbolicRegressionExperiment extends Experiment {
 	}
 
 	public SymbolicRegressionExperiment() {
-		nonTerminals = new String[] { "*", "+", "-" };
+		nonTerminals = new String[] { "*", "+", "-", "/" };
 		terminals = new String[] { "x" };
 		maxEvals = 100000;
 	}

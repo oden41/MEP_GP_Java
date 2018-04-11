@@ -10,7 +10,7 @@ public class MEPGenerationGap extends GenerationGap {
 	Experiment experiment;
 	MEPOperator operator;
 	int geneLength;
-	double crossoverRatio = 0.9;
+	double crossoverRatio = 0.7;
 	double mutationRatio = 1 - crossoverRatio;
 
 	public MEPGenerationGap(Experiment experiment, int noOfPopulation, int geneLength) {
